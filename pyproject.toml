@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veerastox"
+version = "0.1.0"
+description = "Starter scripts for collecting stock data and evaluating simple strategies"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.2.0",
+  "numpy>=1.26.0",
+  "yfinance>=0.2.50",
+  "python-dotenv>=1.0.1",
+  "matplotlib>=3.8.0",
+  "lxml>=5.0.0",
+  "streamlit>=1.38.0",
+  "streamlit-aggrid>=1.0.5",
+  "plotly>=5.24.0",
+]
+
+[project.scripts]
+veerastox-get-data = "invest.cli.get_data:main"
+veerastox-generate-signals = "invest.cli.generate_signals:main"
+veerastox-run-backtest = "invest.cli.run_backtest:main"
+veerastox-cleanup = "invest.cli.cleanup:main"
+veerastox-beta-sp500 = "invest.cli.beta_top20_sp500:main"
+veerastox-beta-nasdaq = "invest.cli.beta_top20_nasdaq:main"
+veerastox-beta-dji = "invest.cli.beta_top20_dji:main"
+veerastox-beta-all = "invest.cli.beta_top_50_all:main"
+veerastox-webapp = "invest.cli.webapp:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,16 @@
+services:
+  veerastox-webapp:
+    image: veerastox-webapp:latest
+    build:
+      context: .
+    container_name: veerastox-webapp
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./config:/app/config
+      - ./.env:/app/.env:ro
+    restart: unless-stopped
